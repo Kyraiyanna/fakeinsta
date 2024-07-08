@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<title>Newsletter subscription - HTML form</title>
+<meta charset="UTF-8">
+<style>
+        body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+         
+        * {
+        box-sizing: border-box;
+    }
+         
+        input[type=text], select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 10px;
+            resize: vertical;
+        }
+         
+        .container {
+            width: 720px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+         
+        button {
+            background-color: #4b4241;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+         
+        button:hover {
+            background-color: #00a19c;
+        }
+         
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+</style>
+         
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<script>
+        function onSubmit(token) {
+        document.getElementById("displayform").submit();
+        }
+</script>  
+</head>
+
+<body>
+        <h1>Subscribe to our newsletter</h1>
+        <p>Our free monthly newsletter informs you about new products and current developments.</p>
+
+        <div class="container">
+        <form action="https://web.inxmail.com/[organisation]/subscription/servletv2" method="post" id="displayform">
+                    <input type="hidden" name="INXMAIL_SUBSCRIPTION" value="[list name]"/>
+                    <input type="hidden" name="INXMAIL_HTTP_REDIRECT" value="[URL for landing page "Success"]"/>
+                    <input type="hidden" name="INXMAIL_HTTP_REDIRECT_ERROR" value="[URL for landing page "Error"]"/>
+                    <input type="hidden" name="INXMAIL_CHARSET" value="UTF-8"/>
+            <label>Email*
+                    <input type="text" name="email">
+               </label>
+                <label>Salutation
+                        <select name="Salutation">
+                            <option value="male">Mr</option>
+                            <option value="female">Ms</option>
+                            <option value="neutral">Divers</option>
+                        </select>
+                </label>
+                   <label>First name
+                        <input type="text" name="First name">
+                   </label>
+                   <label>Last name
+                        <input type="text" name="Last name">
+                   </label>
+                <label>
+                    <input type="checkbox" name="INXMAIL_TRACKINGPERMISSION">
+                        Yes, I agree to my personal user behaviour in the newsletter being collected and analysed so that the content of the newsletter can be targeted better to my personal interests. I can deactivate this function at any time via a link in the newsletter.<br>
+                   </label>
+        <button class="g-recaptcha" data-sitekey="6Ld673sUAAAAANIr4kvsqp3F1i4iiOatKNVWVCL2" data-callback='onSubmit'>Subscribe</button>
+            </form>
+    </div>
+</body>
+</html>
